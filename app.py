@@ -16,13 +16,17 @@ from __future__ import unicode_literals
 
 import os
 import sys
-from pycharmdebug import pydevd
+
 from argparse import ArgumentParser
 
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
 
 from flask import Flask, request, abort
+# from flask_sslify import SSLify
+
+import ssl
+
 from linebot import (
     LineBotApi, WebhookParser
 )
@@ -34,6 +38,7 @@ from linebot.models import (
 )
 
 app = Flask(__name__)
+# sslify = SSLify(app)
 
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv('LINE_CHANNEL_SECRET', '948ae2b5c686b6f06f381010f1321f8c')
@@ -51,12 +56,15 @@ parser = WebhookParser('948ae2b5c686b6f06f381010f1321f8c')
 
 @app.route("/callback", methods=['POST'])
 def callback():
+
+    print(" =========== Start Callback =============")
+    print(request)
     signature = request.headers['X-Line-Signature']
 
     # get request body as text
     body = request.get_data(as_text=True)
     # app.logger.info("Request body: " + body)
-    
+    print(body);
     # parse webhook body
     try:
         events = parser.parse(body, signature)
@@ -103,16 +111,19 @@ class KantaiBOT:
 
 if __name__ == "__main__":
     bot = KantaiBOT();
-
-    pydevd.settrace('172.31.83.121', port=6500, stdoutToServer=True, stderrToServer=True)
+    # context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+    # context.load_cert_chain('ca.crt', 'ca.key')
 
     arg_parser = ArgumentParser(
         usage='Usage: python ' + __file__ + ' [--port <port>] [--help]'
     )
-    arg_parser.add_argument('-p', '--port', default=1234, help='port')
+    arg_parser.add_argument('-p', '--port', default=1299, help='port')
     arg_parser.add_argument('-d', '--debug', default=False, help='debug')
-    arg_parser.add_argument('--host', default="172.31.83.121", help='set host location')
+    arg_parser.add_argument('--host', default="127.0.0.1", help='set host location')
 
     options = arg_parser.parse_args()
 
-    app.run(host=options.host, debug=options.debug, port=options.port)
+    # ssl_context='adhoc'
+    context = ('ca.crt', 'ca.key')
+    app.run(host='127.0.0.1', port=1299, ssl_context=context, threaded=True, debug=False)
+    # app.run(host=options.host, debug=options.debug, port=options.port, ssl_context=context)
