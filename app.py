@@ -16,6 +16,7 @@ from __future__ import unicode_literals
 
 import os
 import sys
+from pycharmdebug import pydevd
 from argparse import ArgumentParser
 
 from chatterbot import ChatBot
@@ -103,12 +104,14 @@ class KantaiBOT:
 if __name__ == "__main__":
     bot = KantaiBOT();
 
+    pydevd.settrace('172.31.83.121', port=6500, stdoutToServer=True, stderrToServer=True)
+
     arg_parser = ArgumentParser(
         usage='Usage: python ' + __file__ + ' [--port <port>] [--help]'
     )
     arg_parser.add_argument('-p', '--port', default=1234, help='port')
     arg_parser.add_argument('-d', '--debug', default=False, help='debug')
-    arg_parser.add_argument('--host', default="0.0.0.0", help='set host location')
+    arg_parser.add_argument('--host', default="172.31.83.121", help='set host location')
 
     options = arg_parser.parse_args()
 

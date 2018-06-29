@@ -1,0 +1,9 @@
+pydev_app_engine_debug_startup
+pydevd
+pydev_run_in_console
+interpreterInfo
+pydevd_file_utils
+pydevconsole
+pydev_coverage
+pycompletionserver
+pydev_pysrc
