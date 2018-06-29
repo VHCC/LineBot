@@ -101,11 +101,15 @@ class KantaiBOT:
         return self.chatbot.get_response(message)
 
 if __name__ == "__main__":
+    bot = KantaiBOT();
+
     arg_parser = ArgumentParser(
         usage='Usage: python ' + __file__ + ' [--port <port>] [--help]'
     )
     arg_parser.add_argument('-p', '--port', default=1234, help='port')
     arg_parser.add_argument('-d', '--debug', default=False, help='debug')
+    arg_parser.add_argument('--host', default="0.0.0.0", help='set host location')
+
     options = arg_parser.parse_args()
-    bot = KantaiBOT();
-    app.run(debug=options.debug, port=options.port)
+
+    app.run(host=options.host, debug=options.debug, port=options.port)
