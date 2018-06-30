@@ -58,7 +58,7 @@ parser = WebhookParser('948ae2b5c686b6f06f381010f1321f8c')
 def callback():
 
     print(" =========== Start Callback =============")
-    print(request)
+    # print(request)
     signature = request.headers['X-Line-Signature']
 
     # get request body as text
@@ -124,6 +124,6 @@ if __name__ == "__main__":
     options = arg_parser.parse_args()
 
     # ssl_context='adhoc'
-    context = ('ca.crt', 'ca.key')
-    app.run(host='127.0.0.1', port=1299, ssl_context=context, threaded=True, debug=False)
-    # app.run(host=options.host, debug=options.debug, port=options.port, ssl_context=context)
+    # context = ('ca.crt', 'ca.key')
+    # app.run(host='127.0.0.1', port=1299, ssl_context=context, threaded=True, debug=False)
+    app.run(host=options.host, debug=options.debug, port=options.port);
