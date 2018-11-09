@@ -41,8 +41,8 @@ app = Flask(__name__)
 # sslify = SSLify(app)
 
 # get channel_secret and channel_access_token from your environment variable
-channel_secret = os.getenv('LINE_CHANNEL_SECRET', '948ae2b5c686b6f06f381010f1321f8c')
-channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', '91rCJ6zpvYhZW5PuJEMBcAEIUVueCbIb/ezRu/syfcAzu64uhWgdwSbqG8zJXkjdQqelAvAVNQi7OcwUQDkjJ3RI8oCLLXqtgSzW6TgTJH/ePfKobmMuecEj3pQgHyJ0fwiuJzKnKPuB4dv9jAFX/gdB04t89/1O/w1cDnyilFU=')
+channel_secret = os.getenv('LINE_CHANNEL_SECRET', '1a2da7b8ab4436320d9e589df476e72f')
+channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', 'Fjxj5it/OvSgCJiMh3ixzU5J02mlR0lWx772P+oGRX/VKoA216Q5dCi9JG/ZgBAW2TTgFhfRkQ6iV/yfLk//m5L21UnGBVfxdaz53RdWGXOUsBC4i3ydFV7eU8G2ayBpzzJfidCr4osmyiXrNpk5RgdB04t89/1O/w1cDnyilFU=')
 if channel_secret is None:
     print('Specify LINE_CHANNEL_SECRET as environment variable.')
     sys.exit(1)
@@ -50,8 +50,8 @@ if channel_access_token is None:
     print('Specify LINE_CHANNEL_ACCESS_TOKEN as environment variable.')
     sys.exit(1)
 
-line_bot_api = LineBotApi('91rCJ6zpvYhZW5PuJEMBcAEIUVueCbIb/ezRu/syfcAzu64uhWgdwSbqG8zJXkjdQqelAvAVNQi7OcwUQDkjJ3RI8oCLLXqtgSzW6TgTJH/ePfKobmMuecEj3pQgHyJ0fwiuJzKnKPuB4dv9jAFX/gdB04t89/1O/w1cDnyilFU=')
-parser = WebhookParser('948ae2b5c686b6f06f381010f1321f8c')
+line_bot_api = LineBotApi('Fjxj5it/OvSgCJiMh3ixzU5J02mlR0lWx772P+oGRX/VKoA216Q5dCi9JG/ZgBAW2TTgFhfRkQ6iV/yfLk//m5L21UnGBVfxdaz53RdWGXOUsBC4i3ydFV7eU8G2ayBpzzJfidCr4osmyiXrNpk5RgdB04t89/1O/w1cDnyilFU=')
+parser = WebhookParser('1a2da7b8ab4436320d9e589df476e72f')
 
 
 @app.route("/callback", methods=['POST'])
