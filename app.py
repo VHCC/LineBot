@@ -119,7 +119,7 @@ if __name__ == "__main__":
     )
     arg_parser.add_argument('-p', '--port', default=1299, help='port')
     arg_parser.add_argument('-d', '--debug', default=False, help='debug')
-    arg_parser.add_argument('--host', default="127.0.0.1", help='set host location')
+    arg_parser.add_argument('--host', default="192.168.1.151", help='set host location')
 
     options = arg_parser.parse_args()
 
