@@ -77,14 +77,14 @@ def callback():
             continue
         if not isinstance(event.message, TextMessage):
             continue
-        print('Input = ' + event.message.text)
+ #       print('Input = ' + event.message.text)
         result = bot.getResponse(event.message.text)
         line_bot_api.reply_message(
             event.reply_token,
             # TextSendMessage(text=event.message.text)
             TextSendMessage(text=result.text)
         )
-        print('Output= ' + result.text)
+#        print('Output= ' + result.text)
 
     return 'OK'
 
