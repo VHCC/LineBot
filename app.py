@@ -16,6 +16,7 @@ from __future__ import unicode_literals
 
 import os
 import sys
+import logging
 
 from argparse import ArgumentParser
 
@@ -69,6 +70,7 @@ def callback():
     try:
         events = parser.parse(body, signature)
     except InvalidSignatureError:
+        logging.error("Catch an exception.", exc_info=True)
         abort(400)
 
     # if event is MessageEvent and message is TextMessage, then echo text
@@ -103,7 +105,7 @@ class KantaiBOT:
         print ('KantaiBOT, __init__')
 
         self.chatbot.set_trainer(ChatterBotCorpusTrainer)
-        self.chatbot.train("./customize/")
+        self.chatbot.train("customize/")
         # self.chatbot.train("chatterbot.corpus.custom")
 
     def getResponse(self, message=""):
@@ -119,7 +121,7 @@ if __name__ == "__main__":
     )
     arg_parser.add_argument('-p', '--port', default=1299, help='port')
     arg_parser.add_argument('-d', '--debug', default=False, help='debug')
-    arg_parser.add_argument('--host', default="192.168.1.151", help='set host location')
+    arg_parser.add_argument('--host', default="localhost", help='set host location')
 
     options = arg_parser.parse_args()
 
