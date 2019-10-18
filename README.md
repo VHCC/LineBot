@@ -30,3 +30,7 @@ $ python app_with_handler.py
 2. python3 app.py
 3. set the webhook url in Line Console.
 4. set the right port in reverse-proxy, it's 1234
+
+
+## Line-Api
+Futher more detail please visit [Line-API](https://developers.line.biz/en/)
