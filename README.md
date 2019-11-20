@@ -24,12 +24,12 @@ $ python app_with_handler.py
 ```
 
 
-### How to run this project
+## How to run this project
 
-1. reverse-proxy this app
-2. python3 app.py
-3. set the webhook url in Line Console.
-4. set the right port in reverse-proxy, it's 1234
+- reverse-proxy this app
+- python3 app.py
+- set the webhook url in Line Console.
+- set the right port in reverse-proxy, default is 1234.
 
 
 ## Line-Api
